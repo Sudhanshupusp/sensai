@@ -17,7 +17,7 @@ const Header = async () => {
         supports-[backdrop-filter]:bg-background/60">
             <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href='/'>
-                    <Image src="/logo.png" alt='sensai logo' width={200} height={60}
+                    <Image src="/logo.png" alt='GuruAi logo' width={200} height={60}
                         className="h-12 py-1 w-auto object-contain" />
                 </Link>
 
