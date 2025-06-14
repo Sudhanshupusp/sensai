@@ -12,12 +12,22 @@ export const metadata = {
   description: "Created for a practice",
 };
 
+// Add development fallback for Clerk publishable key
+const clerkPubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 
+  (process.env.NODE_ENV === 'development' ? 'pk_test_dummy-key-for-development' : '');
+
+if (!clerkPubKey && process.env.NODE_ENV === 'production') {
+  throw new Error("Missing Clerk publishable key");
+}
+
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider appearance={{
-      baseTheme: dark,
-    }}>
-    
+    <ClerkProvider 
+      publishableKey={clerkPubKey}
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className}`}
